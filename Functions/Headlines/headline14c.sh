@@ -1,4 +1,20 @@
 #!/bin/sh
+#
+# SCRIPT:	headline14c.sh
+# AUTHOR:	thedzy <thedzy@hotmail.com>
+# DATE:		2018-09-24
+# REV:		14.0c
+#
+# PLATFORM: MacOS
+#
+# PURPOSE:
+#	Print title/banner
+#
+# FUNCTIONS: 
+#	headline()
+# PARAMETERS: 
+#	$@ Text to  print
+#
 
 headline () {
 	# http://patorjk.com/software/taag/#p=testall&h=0&v=0&f=Modular&t=ABCDEFGHIJKLMNOPQRSTUVWXYZ
