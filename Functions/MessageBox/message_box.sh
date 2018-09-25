@@ -1,4 +1,24 @@
 #!/bin/sh
+#
+# SCRIPT:	message_box.sh
+# AUTHOR:	thedzy <thedzy@hotmail.com>
+# DATE:		2018-09-24
+# REV:		2.0c
+#
+# PLATFORM: MacOS
+#
+# PURPOSE:
+#	Display a message centre screen
+#
+# FUNCTIONS: 
+#	messagebox()
+# PARAMETERS: 
+#	$1 Message (default: ERROR)
+#	$2 Width (default: 5)
+#	$3 Hieght (default: 3)
+#	$4 Colour (default: 9)
+#	$5 Text Colour (default: 15)
+#
 
 messagebox () {
 	# Usage :
