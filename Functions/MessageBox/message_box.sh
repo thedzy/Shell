@@ -3,7 +3,7 @@
 # SCRIPT:	message_box.sh
 # AUTHOR:	thedzy <thedzy@hotmail.com>
 # DATE:		2018-09-24
-# REV:		2.0c
+# REV:		2.0
 #
 # PLATFORM: MacOS
 #
