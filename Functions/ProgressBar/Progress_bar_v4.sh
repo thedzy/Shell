@@ -1,4 +1,24 @@
 #!/bin/sh
+#
+# SCRIPT:	Progress_bar_v4.sh
+# AUTHOR:	thedzy <thedzy@hotmail.com>
+# DATE:		2018-09-24
+# REV:		4.0
+#
+# PLATFORM: MacOS
+#
+# PURPOSE:
+#	Display progress bar with title
+#
+# FUNCTIONS: 
+#	ProgressBar()
+# PARAMETERS: 
+#	$1 MaxLength
+#	$2 Position
+#	$3 Title
+#	$4+ Colours
+#
+
 
 ProgressBar() {
 
