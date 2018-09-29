@@ -2,7 +2,7 @@
 
 HR=$(tput cols)
 HR="$(printf "%${HR}s")"
-HR=${HR// /-}
+HR=${HR// /=}
 echo $HR
 
 
