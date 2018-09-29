@@ -1,5 +1,5 @@
 # Templates
-Small bits of code that can be used to create or enhance some of your larger scripts
+Full templates to start a script form giving you everything you will need a standard script
 
 ## Blank
 Full template.
