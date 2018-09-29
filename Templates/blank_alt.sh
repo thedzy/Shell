@@ -203,9 +203,9 @@ if ( ${HELP:-false} ) then
 	# OPTIONS
 	printf "${KBLD}[OPTIONS]${KNRM}\n"
 	printf "\t%s\t%s\n" \
-		"h" "Bring up this help message" \
-		"d" "Debug on" \
-		"l" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
+		"h|help" "Bring up this help message" \
+		"d|debug" "Debug on" \
+		"l|log" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
 	
 	
 	printf "\n\n"
