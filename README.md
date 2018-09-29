@@ -7,5 +7,8 @@ Files to include as source to add functionality to your code or to copy and past
 # Templates
 Blank templates for easy starts to scripts.  Includes common headers, variables and traps
 
+# Scripts
+Full scripts
+
 # Snippets
 Small bits of code that can be used to create or enhance some of your larger scripts
