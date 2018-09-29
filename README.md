@@ -6,3 +6,6 @@ Files to include as source to add functionality to your code or to copy and past
 
 # Templates
 Blank templates for easy starts to scripts.  Includes common headers, variables and traps
+
+# Fun and Useless
+I was going to name this "because I could".  These serve no purpose other than, I wanted to try to create them.  You can find useless dibits of code within them.

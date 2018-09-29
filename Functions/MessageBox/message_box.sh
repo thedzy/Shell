@@ -1,24 +1,25 @@
 #!/bin/sh
 #
-# SCRIPT:	message_box.sh
+# SCRIPT:	banner.sh
 # AUTHOR:	thedzy <thedzy@hotmail.com>
-# DATE:		2018-09-24
+# DATE:		2018-09-29
 # REV:		2.0
 #
 # PLATFORM: MacOS
 #
-# PURPOSE:
-#	Display a message centre screen
+# DESCRIPTION:
+#	Uses the MacOS banner function and corrects it to horizontal
 #
-# FUNCTIONS: 
-#	messagebox()
+# BUGS:
+#
+#
 # PARAMETERS: 
-#	$1 Message (default: ERROR)
-#	$2 Width (default: 5)
-#	$3 Hieght (default: 3)
-#	$4 Colour (default: 9)
-#	$5 Text Colour (default: 15)
-#
+#	$1 Text to write
+#	$2 Window Width
+#	$3 Window Height
+#	$4 Window Colour
+#	$5 Text Colour
+
 
 messagebox () {
 	# Usage :
