@@ -5,10 +5,16 @@ Snippets of code for larger bodies of code
 Get the date of a file using the date command
 ## get_user_input.sh
 Using read to get input from the user
-## positional_parameters
+## horitzontal_rule.sh
+Create a HR (Horizontal Rule)
+## paths_and_names.sh
+Extracting paths, filesnames and relative paths
+## positional_parameters.sh
 Getting poistionsal paramets supplied after the command/file
 ## print_system_varaibles.sh
 Print out all variables that the script can access.  Created by the system of user
+## randoms
+Create random variables of text, numbers, hex, Base64, files and installers
 ## redirecting_screen_to_file.sh
 Redirect all screen output to a file a redirect back at the end
 ## redirecting_screen_to_log.sh
