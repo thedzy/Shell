@@ -4,6 +4,9 @@ Recreates the package command for creating a payload free package by allowing th
 # colours.sh
 Visualise term 256 colours or find the colour pattern to create a gradient
 
+# draw.sh
+A drawinf program writen in shell
+
 # embed_file_in_script
 Creates a script that will generate a file when run.  Can be used to create starter scripts to embed files that will be needed during it's run.
 
