@@ -15,3 +15,5 @@ Create an alert/message box in the centre of screen, or prompt a question
 ## ProgressBar
 Create a progress bar with title and percentage with customisable colours. 
 
+## Timeout
+Assign a timeout to a function and return if it completed within the time provided.  Good for cammands that can run on
