@@ -12,6 +12,9 @@ Create stylised text that can be used to title the start of a script run
 ## MessageBox
 Create an alert/message box in the centre of screen, or prompt a question
 
+## Network
+Basic network functions
+
 ## ProgressBar
 Create a progress bar with title and percentage with customisable colours. 
 
