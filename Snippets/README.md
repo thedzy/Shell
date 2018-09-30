@@ -1,10 +1,16 @@
 # Mac-Snippets
 Snippets of code for larger bodies of code
 
+## dialog_ok.sh
+Get the user to agree in GUI dialog
+## embedding_expect.sh
+Embedding an expect script into a shell script
 ## get_file_date.sh
 Get the date of a file using the date command
 ## get_user_input.sh
 Using read to get input from the user
+## get_user_password_for_sudo.sh
+Prompt user for admin password in GUI
 ## horitzontal_rule.sh
 Create a HR (Horizontal Rule)
 ## paths_and_names.sh
@@ -19,6 +25,20 @@ Create random variables of text, numbers, hex, Base64, files and installers
 Redirect all screen output to a file a redirect back at the end
 ## redirecting_screen_to_log.sh
 Redirect all screen output to a log file differentialing between error and output
+## root_privilages_required.sh
+Run the script with root privilages
+## run_as_another_user.sh
+Run commands under another user (requires root)
+## self_destruct_alt.sh
+Delete the script after a successful completion
+## self_destruct.sh
+Delete the script before it runs
+## traps.sh
+Using system traps to trap (catch) errors, exits, interupts, etc.
+## try_and_catch.sh
+Simple try and catch statement for rolling back on a statement
+## unsizable window.sh
+Prevent window resize
 ## user_initialied_loop_breaks.sh
 Create a loop that the user can break
 ## user_must_choose.sh
