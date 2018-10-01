@@ -31,6 +31,8 @@ Redirect all screen output to a log file differentialing between error and outpu
 Run the script with root privilages
 ## run_as_another_user.sh
 Run commands under another user (requires root)
+## self_caffienate.sh
+Launch script with caffeinate, so the system doesn't sleep while it runs
 ## self_destruct_alt.sh
 Delete the script after a successful completion
 ## self_destruct.sh
