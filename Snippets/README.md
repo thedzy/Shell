@@ -5,6 +5,8 @@ Snippets of code for larger bodies of code
 Get the user to agree in GUI dialog
 ## embedding_expect.sh
 Embedding an expect script into a shell script
+## embedding_applescript.sh
+Embedding an AppleScript into a shell script
 ## get_file_date.sh
 Get the date of a file using the date command
 ## get_user_input.sh
