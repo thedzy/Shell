@@ -7,6 +7,8 @@ Get the user to agree in GUI dialog
 Embedding an expect script into a shell script
 ## embedding_applescript.sh
 Embedding an AppleScript into a shell script
+## encypt_decrypt.sh
+Encypt and decrypt a file while storing and retirving key from the keychain
 ## get_file_date.sh
 Get the date of a file using the date command
 ## get_user_input.sh
