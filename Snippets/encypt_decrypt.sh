@@ -16,15 +16,15 @@ echo "Decrypted File:     $DECFILE"
 KEY="$(openssl rand -base64 48)"
 
 # Add key to the keychain
-security add-generic-password -a "" -j "Key to decrypt $ORGFILE" -l "$ORGFILE" -s "Terminal" -w "$KEY"
+security add-generic-password -a "" -j "Key to decrypt $ENCFILE" -l "$ENCFILE" -s "Terminal" -w "$KEY"
 # If error 45, get key stored
-[ $? -eq 45 ] && KEY=$(security find-generic-password -l "$ORGFILE" -w)
+[ $? -eq 45 ] && KEY=$(security find-generic-password -l "$ENCFILE" -w)
 # Encypt file
 openssl enc -des3 -in "$ORGFILE" -out "$ENCFILE" -salt -a -k "$KEY"
 unset KEY
 
 # Retrieve key from Keychain
-KEYRETRIEVED=$(security find-generic-password -l "$ORGFILE" -w)
+KEYRETRIEVED=$(security find-generic-password -l "$ENCFILE" -w)
 # Decrypt file
 openssl enc -d -des3 -in "$ENCFILE" -out "$DECFILE" -salt -a -k "$KEYRETRIEVED"
 
