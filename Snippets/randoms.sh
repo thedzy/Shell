@@ -53,4 +53,4 @@ ruby -e 'a=STDIN.readlines;100.times do;b=[];1000.times do; b << a[rand(a.size)]
 # Turn file into package
 mkdir -p /tmp/1mbfile
 dd if=/dev/urandom of=/tmp/1mbfile/1mbfile.dat count=1024 bs=1024
-pkgbuild --root /tmp/1mbfile  --identifier com.booking.1mbfile --version 0.1 --install-location /tmp  ~/Desktop/1mbfile.pkg
+pkgbuild --root /tmp/1mbfile  --identifier com.example.1mbfile --version 0.1 --install-location /tmp  ~/Desktop/1mbfile.pkg
