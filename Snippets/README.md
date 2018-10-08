@@ -25,6 +25,8 @@ Getting poistionsal paramets supplied after the command/file
 Print out all variables that the script can access.  Created by the system of user
 ## randoms
 Create random variables of text, numbers, hex, Base64, files and installers
+## recursive_loops.sh
+Examples of recurive loops in the bourne shell
 ## redirecting_screen_to_file.sh
 Redirect all screen output to a file a redirect back at the end
 ## redirecting_screen_to_log.sh
