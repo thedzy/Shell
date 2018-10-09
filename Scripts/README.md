@@ -10,5 +10,8 @@ A drawinf program writen in shell
 # embed_file_in_script
 Creates a script that will generate a file when run.  Can be used to create starter scripts to embed files that will be needed during it's run.
 
+# ping_range.sh
+Ping a range of IPs simulatously for faster speeds
+
 # portscan
 Scan your open ports.  Quicker scan with forked processes.
