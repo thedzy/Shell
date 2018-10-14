@@ -15,26 +15,26 @@ while getopts ":o:i:c?:b?:v?:h?:" opt; do
 		# Store multiple infiles
 		INFILES+=( "$OPTARG" ) >&2
 		;;
-    c)
-    	# Store True if seen
+	c)
+		# Store True if seen
 		COLOUR=true >&2
 		;;
-    b)
-    	# Store False if seen
+	b)
+		# Store False if seen
 		BLACK=false >&2
 		;;
 	v)
 		# Store how many times the option is chosen
 		(( VERBOSE++ ))
 		;;
-    h)
+	h)
 		HELP=true
 		;;
-    \?)
+	\?)
 		echo "Invalid option: -$OPTARG" >&2
 		exit 1
 		;;
-    :)
+	:)
 		echo "Option -$OPTARG requires an argument." >&2
 		exit 1
 		;;
