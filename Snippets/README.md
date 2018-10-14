@@ -2,7 +2,9 @@
 Snippets of code for larger bodies of code
 
 ## arguments_named.sh
-
+Getting poistionsal arguments supplied after the command/file with single character arguments (-h)
+## arguments_named_alt.sh
+Getting poistionsal arguments supplied after the command/file with full names (--help)
 ## arguments_positional.sh
 Getting poistionsal arguments supplied after the command/file
 ## dialog_ok.sh
