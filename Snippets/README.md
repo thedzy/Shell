@@ -1,6 +1,8 @@
 # Mac-Snippets
 Snippets of code for larger bodies of code
 
+## arguments_named.sh
+
 ## arguments_positional.sh
 Getting poistionsal arguments supplied after the command/file
 ## dialog_ok.sh
