@@ -5,49 +5,49 @@
 
 while [[ $# > 0 ]]
 do
-    key="$1"
-    case $key in
-    	-o|--outfile)
-    		OUTFILE="$2"
-    		shift
-    	;;
-        -i|--infile)
-            nextArg="$2"
-            while ! [[ "$nextArg" =~ -.* ]] && [[ $# > 1 ]]; do
-                INFILES+=($nextArg)
-                if ! [[ "$2" =~ -.* ]]; then
-                    shift
-                    nextArg="$2"
-                else
-                    shift
-                    break
-                fi
-            done
-        ;;
-        -c|--colour)
-            COLOUR=true
-        ;;
-        -b|--black)
-            BLACK=false
-        ;;
-        -v|--verbose)
-        	VERBOSE=1
-        ;;
-        -vv|--verboser)
-        	VERBOSE=2
-        ;;
-        -vvv|--verbosest)
-        	VERBOSE=3
-        ;;
-        -h|--help)
+	KEY="$1"
+	case $KEY in
+		-o|--outfile)
+			OUTFILE="$2"
+			shift
+		;;
+		-i|--infile)
+			nextArg="$2"
+			while ! [[ "$nextArg" =~ -.* ]] && [[ $# > 1 ]]; do
+				INFILES+=($nextArg)
+				if ! [[ "$2" =~ -.* ]]; then
+					shift
+					nextArg="$2"
+				else
+					shift
+					break
+				fi
+			done
+		;;
+		-c|--colour)
+			COLOUR=true
+		;;
+		-b|--black)
+			BLACK=false
+		;;
+		-v|--verbose)
+			VERBOSE=1
+		;;
+		-vv|--verboser)
+			VERBOSE=2
+		;;
+		-vvv|--verbosest)
+			VERBOSE=3
+		;;
+		-h|--help)
 			HELP=true
 		;;
-        *)
-            echo "Unknown flag $key"
-            exit 1
-        ;;
-    esac
-    shift
+		*)
+			echo "Unknown flag $KEY"
+			exit 1
+		;;
+	esac
+	shift
 done
 
 ##########################################################################################
