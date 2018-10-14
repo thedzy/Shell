@@ -19,8 +19,8 @@ Prompt user for admin password in GUI
 Create a HR (Horizontal Rule)
 ## paths_and_names.sh
 Extracting paths, filesnames and relative paths
-## positional_parameters.sh
-Getting poistionsal paramets supplied after the command/file
+## positional_arguments.sh
+Getting poistionsal arguments supplied after the command/file
 ## print_system_varaibles.sh
 Print out all variables that the script can access.  Created by the system of user
 ## randoms
