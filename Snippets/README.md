@@ -1,6 +1,8 @@
 # Mac-Snippets
 Snippets of code for larger bodies of code
 
+## arguments_positional.sh
+Getting poistionsal arguments supplied after the command/file
 ## dialog_ok.sh
 Get the user to agree in GUI dialog
 ## embedding_expect.sh
@@ -19,8 +21,6 @@ Prompt user for admin password in GUI
 Create a HR (Horizontal Rule)
 ## paths_and_names.sh
 Extracting paths, filesnames and relative paths
-## positional_arguments.sh
-Getting poistionsal arguments supplied after the command/file
 ## print_system_varaibles.sh
 Print out all variables that the script can access.  Created by the system of user
 ## randoms

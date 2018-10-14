@@ -9,25 +9,25 @@ echo "$0"
 echo "$#"
 
 
-# All parameters as one
+# All arguments as one
 echo "${*}"
 
-# All parameters as array
+# All arguments as array
 echo "${@}
 
-# Parmeters 1 and 3
+# Arguments 1 and 3
 echo "${1} ${3}"
 
 
-# Parameters 4+"
+# Arguments 4+"
 echo "${@:4}"
 
 
-# Parameters 4-6, Parameter 4 plus 2
+# Arguments 4-6, Arguments 4 plus 2
 echo "${@:4:2}"
 
 
-# Loop through parameters
+# Loop through arguments
 for PARAM in "$@"; do
 	(( PARAMNUM++ ))
 	echo "$PARAMNUM: $PARAM"
