@@ -26,7 +26,7 @@ Create a HR (Horizontal Rule)
 ## paths_and_names.sh
 Extracting paths, filesnames and relative paths
 ## print_system_varaibles.sh
-Print out all variables that the script can access.  Created by the system of user
+Print out all variables that the script can access.  Created by the system or user
 ## randoms
 Create random variables of text, numbers, hex, Base64, files and installers
 ## recursive_loops.sh
