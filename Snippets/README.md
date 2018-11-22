@@ -23,6 +23,8 @@ Using read to get input from the user
 Prompt user for admin password in GUI
 ## horitzontal_rule.sh
 Create a HR (Horizontal Rule)
+## multithreading.sh
+A simple multithreaded script
 ## paths_and_names.sh
 Extracting paths, filesnames and relative paths
 ## print_system_varaibles.sh
