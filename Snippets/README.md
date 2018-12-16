@@ -25,6 +25,8 @@ Prompt user for admin password in GUI
 Create a HR (Horizontal Rule)
 ## multithreading.sh
 A simple multithreaded script
+## open_url.sh
+Open a url in an external browser
 ## paths_and_names.sh
 Extracting paths, filesnames and relative paths
 ## print_system_varaibles.sh
