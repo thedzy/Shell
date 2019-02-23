@@ -1,3 +1,4 @@
+#!/bin/sh
 # Must choose two examples
 
 tput reset
