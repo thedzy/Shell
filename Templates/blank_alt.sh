@@ -181,7 +181,7 @@ done
 # Help
 ################
 
-if ( ${HELP:-false} ) then
+if ( ${HELP:-false} ); then
 	printf "\n"
 
 	# NAME
