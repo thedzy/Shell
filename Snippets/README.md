@@ -1,6 +1,8 @@
 # Mac-Snippets
 Snippets of code for larger bodies of code
 
+## accessing_regio.sh
+Read and find data in the ioreg (I/O Kit registry)
 ## arguments_named.sh
 Getting poistionsal arguments supplied after the command/file with single character arguments (-h)
 ## arguments_named_alt.sh
