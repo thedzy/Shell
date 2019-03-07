@@ -35,13 +35,17 @@ print_values(){
     # :param value: Value
     # #########
 
-      export LC_CTYPE=C
+    export LC_CTYPE=C
     export LANG=C
 
     KEYS="$1"
     VALUES="$2"
 
-    printf "%-20s %s" "$KEYS" "$VALUES" | sed "s:^:    :g"
+    if [ -z "$VALUES" ]; then
+        printf "%-20s" "$KEYS"| sed "s:^:    :g"
+    else
+        printf "%-20s : %s" "$KEYS" "$VALUES" | sed "s:^:    :g"
+    fi
 
 }
 
