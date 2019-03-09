@@ -25,6 +25,8 @@ Using read to get input from the user
 Prompt user for admin password in GUI
 ## horitzontal_rule.sh
 Create a HR (Horizontal Rule)
+## json_pretty_print.py
+How to pretty print a json file
 ## multithreading.sh
 A simple multithreaded script
 ## open_url.sh
