@@ -55,6 +55,8 @@ Delete the script before it runs
 Using system traps to trap (catch) errors, exits, interupts, etc.
 ## try_and_catch.sh
 Simple try and catch statement for rolling back on a statement
+## turn_on_autoproxy.sh
+Turn on autoproxy discovery for all interfaces
 ## unsizable window.sh
 Prevent window resize
 ## user_initialied_loop_breaks.sh
