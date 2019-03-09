@@ -12,12 +12,12 @@ do
 			shift
 		;;
 		-i|--infile)
-			nextArg="$2"
-			while ! [[ "$nextArg" =~ -.* ]] && [[ $# > 1 ]]; do
-				INFILES+=($nextArg)
+			NEXTARG="$2"
+			while ! [[ "$NEXTARG" =~ -.* ]] && [[ $# > 1 ]]; do
+				INFILES+=($NEXTARG)
 				if ! [[ "$2" =~ -.* ]]; then
 					shift
-					nextArg="$2"
+					NEXTARG="$2"
 				else
 					shift
 					break
@@ -54,7 +54,7 @@ done
 # Help
 ################
 
-if ( ${HELP:-false} ) then
+if ( ${HELP:-false} ); then
 	printf "\n"
 
 	# NAME
