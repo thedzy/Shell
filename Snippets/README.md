@@ -9,6 +9,8 @@ Getting poistionsal arguments supplied after the command/file with single charac
 Getting poistionsal arguments supplied after the command/file with full names (--help)
 ## [arguments_positional.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_positional.sh)
 Getting poistionsal arguments supplied after the command/file
+## [arguments_stdin.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_stdin.sh)
+Getting arguments supplied through stdin
 ## [dialog_ok.sh](https://github.com/thedzy/Shell/blob/master/Snippets/dialog_ok.sh)
 Get the user to agree in GUI dialog
 ## [embedding_expect.sh](https://github.com/thedzy/Shell/blob/master/Snippets/embedding_expect.sh)
