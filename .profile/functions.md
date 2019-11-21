@@ -181,3 +181,245 @@ proxys () {
     proxy $1;
 }
 ```
+
+## **Permissions Copy:**
+
+## Copy ownership from path to path  
+Easily copy ownership from a file/directory to files/dictories  
+*Example:*  
+*cpown /path/to/file /path/to/directory*  
+*cpown /path/to/file /path/to/directory/\**  
+*cpown /path/to/file /path/to/directory /path/to/file /path/to/otherfile*  
+```bash
+cpown () {
+    SOURCE="$1"
+    
+    if [ ${#@} -eq 0 ]; then
+        printf "Copies ownership from file A to file C, D, E ...\n"
+        printf "usage: cpown source [destination ...]\n"
+        return 0
+    fi
+    
+    if [ ${#@} -lt 2 ]; then
+        printf "Requires 2 or more parameters\n"
+        return 1
+    fi
+    
+    if [ ! -e "$SOURCE" ]; then
+        printf "Source does not exist\n"
+        return 2
+    fi
+    
+    # STAT
+    {
+        stat "$SOURCE" 
+    } || {
+        sudo stat "$SOURCE"
+    }
+    
+    # 2nd + parameters
+    for DEST in ${@:2}; do
+        if [ ! -e "$DEST" ]; then
+            printf "%s does not exist\n" "$DEST"
+            continue
+        fi
+    
+        {
+            chown $(stat -f%u:%g "$SOURCE") "$DEST" &>/dev/null
+        } && {
+            stat "$DEST"
+        } || {
+            # Try again with sudo
+            printf "Failed, sudoing... \n"
+        
+            sudo chown $(sudo stat -f%u:%g "$SOURCE") "$DEST"
+            sudo stat "$DEST"
+        }
+    done
+}
+```   
+
+## Copy file modes from path to path  
+Easily copy file modes from a file/directory to files/dictories  
+*Example:*  
+*cpown /path/to/file /path/to/directory*  
+*cpown /path/to/file /path/to/directory/\**  
+*cpown /path/to/file /path/to/directory /path/to/file /path/to/otherfile*  
+```bash
+cpmod () {
+    SOURCE="$1"
+    
+    if [ ${#@} -eq 0 ]; then
+        printf "Copies file mode from file A to file C, D, E ...\n"
+        printf "usage: cpmod source [destination ...]\n"
+        return 0
+    fi
+    
+    if [ ${#@} -lt 2 ]; then
+        printf "Requires 2 or more parameters\n"
+        return 1
+    fi
+    
+    if [ ! -e "$SOURCE" ]; then
+        printf "Source does not exist\n"
+        return 2
+    fi
+    
+    # STAT
+    {
+        stat "$SOURCE" 
+    } || {
+        sudo stat "$SOURCE"
+    }
+        
+    for DEST in ${@:2}; do
+        if [ ! -e "$DEST" ]; then
+            printf "%s does not exist\n" "$DEST"
+            continue
+        fi
+    
+        {
+            chmod $(stat -f%Mp%Lp "$SOURCE") "$DEST" &> /dev/null
+        } && {
+            stat "$DEST"
+        } || {
+            # Try again with sudo
+           printf "Failed, sudoing... \n"
+       
+           sudo chmod $(sudo stat -f%Mp%Lp "$SOURCE") "$DEST"
+           sudo stat "$DEST"
+        }
+    done
+}
+```
+
+## Copy file ACLs from path to path  
+Easily copy file ACLs from a file/directory to files/dictories  
+*Example:*  
+*cpown /path/to/file /path/to/directory*  
+*cpown /path/to/file /path/to/directory/\**  
+*cpown /path/to/file /path/to/directory /path/to/file /path/to/otherfile*  
+```bash
+cpacl () {
+    SOURCE="$1"
+    
+    if [ ${#@} -eq 0 ]; then
+        printf "Copies ACLs from file A to file C, D, E ...\n"
+        printf "usage: cpacl source [destination ...]\n"
+        return 0
+    fi
+    
+    if [ ${#@} -lt 2 ]; then
+        printf "Requires 2 or more parameters\n"
+        return 1
+    fi
+    
+    if [ ! -e "$SOURCE" ]; then
+        printf "Source does not exist\n"
+        return 2
+    fi
+    
+    # STAT
+    {
+        stat "$SOURCE" 
+    } || {
+        sudo stat "$SOURCE"
+    }
+    
+    for DEST in ${@:2}; do
+        if [ ! -e "$DEST" ]; then
+            printf "%s does not exist\n" "$DEST"
+            continue
+        fi
+        
+        {
+            (ls -lde "$SOURCE"  | tail +2 | sed 's/^ [0-9]*: //'; echo) | chmod -E  "$DEST" &> /dev/null
+        } && {
+            stat "$DEST"
+        } || {
+            # Try again with sudo
+            printf "Failed, sudoing... \n"
+        
+            (sudo ls -lde "$SOURCE"  | tail +2 | sed 's/^ [0-9]*: //'; echo) | sudo chmod -E  "$DEST"
+            sudo stat "$DEST"
+        }
+    done
+
+}
+```
+
+## Copy ownership, file modes and file ACLs from path to path  
+Easily copy ownership, file modes and file ACLs from a file/directory to files/dictories  
+*Example:*  
+*cpown /path/to/file /path/to/directory*  
+*cpown /path/to/file /path/to/directory/\**  
+*cpown /path/to/file /path/to/directory /path/to/file /path/to/otherfile*  
+```bash
+cpperm () {
+    SOURCE="$1"
+    
+    if [ ${#@} -eq 0 ]; then
+        printf "Copies ownership, file modes, and ACLS from file A to file C, D, E ...\n"
+        printf "usage: cpperm source [destination ...]\n"
+        return 0
+    fi
+    
+    if [ ${#@} -lt 2 ]; then
+        printf "Requires 2 or more parameters\n"
+        return 1
+    fi
+    
+    if [ ! -e "$SOURCE" ]; then
+        printf "Source does not exist\n"
+        return 2
+    fi
+    
+    # STAT
+    {
+        stat "$SOURCE" 
+    } || {
+        sudo stat "$SOURCE"
+    }
+        
+    for DEST in ${@:2}; do
+        if [ ! -e "$DEST" ]; then
+            printf "%s does not exist\n" "$DEST"
+            continue
+        fi
+        
+        # OWN
+        {
+            chown $(stat -f%u:%g "$SOURCE") "$DEST" &>/dev/null
+        } || {
+            # Try again with sudo
+            printf "Failed to change owner, sudoing... \n"
+        
+            sudo chown $(sudo stat -f%u:%g "$SOURCE") "$DEST"
+        }
+        # MOD
+        {
+            chmod $(stat -f%Mp%Lp "$SOURCE") "$DEST" &> /dev/null
+        } || {
+            # Try again with sudo
+           printf "Failed to change file modes, sudoing... \n"
+       
+           sudo chmod $(sudo stat -f%Mp%Lp "$SOURCE") "$DEST"
+        }
+        # ACL
+        {
+            (ls -lde "$SOURCE"  | tail +2 | sed 's/^ [0-9]*: //'; echo) | chmod -E  "$DEST" &> /dev/null
+        } || {
+            # Try again with sudo
+            printf "Failed to change ACLs, sudoing... \n"
+        
+            (sudo ls -lde "$SOURCE"  | tail +2 | sed 's/^ [0-9]*: //'; echo) | sudo chmod -E  "$DEST"
+        }
+        # STAT
+        {
+            stat "$DEST"
+        } || {
+            sudo stat "$DEST"
+        }
+    done
+}
+```
