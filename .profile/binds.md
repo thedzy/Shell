@@ -1,4 +1,4 @@
-#Binds
+# Binds
 
 ## CTRL-Z
 Makes CTRL-Z work like cmd-tab \
