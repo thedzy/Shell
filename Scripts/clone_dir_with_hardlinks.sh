@@ -6,17 +6,24 @@ printf '\e[3J'
 ##########################################################################################
 # thedzy
 # Filename: clone_dir_with_hardlinks.sh
-# Author:   thedz <thedzy@hotmail.com>
+# Author:   thedzy <thedzy@hotmail.com>
 # Date:     2020-06-16
 # Platform: MacOS
 #
-# Description
+# Clone a directory by creating the folder structure and hard linking the files within
 #
 # Versions
-# 1.	Features
+# 1.	Create the directory structure
+# 2.    Create links for all the files
+# 3.    Copy permissions
 #
 #
 # Parameters
+# -s    Source directory
+# -d    Destination directory
+# -v    Verbose Output
+# -e    Verbose and Errors
+# -c    Clear/erase the destination prior to start, requires \"yes\" after to agree ex: -c yes
 # -h	Help
 # -l	Logging
 # -d	Debugging
@@ -31,9 +38,6 @@ printf '\e[3J'
 #	1. Bad parameter
 #	2. Bad log file
 #
-#
-#
-#	100+. 100+ error from line of code
 #
 ##########################################################################################
 
