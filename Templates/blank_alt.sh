@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 tput reset
 printf '\e[3J'
@@ -41,12 +41,15 @@ printf '\e[3J'
 ################
 
 ExitTrap () {
+    # Restore output to terminal
+    exec &>/dev/tty
+
     # Exit code/cleanup
     
     
 
     # Clean up tmpdir
-    rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
+	rm -rf "$TMPDIR" || printf "Error removing temporary directory %s\n" "$TMPDIR"
 
     # Restore formatting
     printf "${KNRM}"
@@ -74,13 +77,13 @@ ErrTrap () {
     local OPT=""
     until [ "${OPT/Y/y}" == "y" ] || [ "${OPT/N/n}" == "n" ]; do
         tput rc
-        !(( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
+        ! (( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
         OPT=${OPT:-0}
         (( LOGGING )) && OPT="y"
     done
     
     # Exit if the user chooses "N/n"
-    [ "${OPT/N/n}" == "n" ] && exit $(( $ERRNUM + 100 )) || printf "\nContinuing ....\n"
+    [ "${OPT/N/n}" == "n" ] && exit $(( ERRNUM + 100 )) || printf "\nContinuing ....\n"
 }
 trap 'ErrTrap ${LINENO} ${?}' ERR
 
@@ -91,8 +94,8 @@ trap 'ErrTrap ${LINENO} ${?}' ERR
 ################
 
 # Global Variables
-BASEPATH="$(dirname $0)"
-BASENAME="$(basename $0)"
+BASEPATH="$(dirname "$0")"
+BASENAME="$(basename "$0")"
 
 
 # Create temporary and working diorectory
@@ -125,7 +128,7 @@ LOGGING=0
 #printf '\033[8;40;100t'
 
 # Set window Title
-printf "\033]0;${BASENAME%%.*}\007"
+printf "\033]0;%s\007" "${BASENAME%%.*}"
 
 # Hide the cursor for the run of the script
 tput civis
@@ -138,15 +141,15 @@ tput civis
 # Uncomment to require at least one parameter else throw help
 #[[ ! $@ =~ ^\-.+ ]] && HELP=true
 
-while [[ $# > 0 ]]
+while [[ $# -gt 0 ]]
 do
     KEY="$1"
     case $KEY in
         -l|--log)
             NEXT_ARG="$2"
-            while ! [[ "$NEXT_ARG" =~ -.* ]] && [[ $# > 1 ]]; do
-                LOGFILE+=($NEXT_ARG)
-                if [ -d "$(dirname $LOGFILE)" ]; then
+            while ! [[ "$NEXT_ARG" =~ -.* ]] && [[ $# -gt 1 ]]; do
+                LOGFILE=$NEXT_ARG
+                if [ -d "$(dirname "$LOGFILE")" ]; then
           exec &> "$LOGFILE"
           LOGGING=1
         else
@@ -206,8 +209,7 @@ if ( ${HELP:-false} ); then
         "h|help" "Bring up this help message" \
         "d|debug" "Debug on" \
         "l|log" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
-    
-    
+
     printf "\n\n"
     exit 0
 fi

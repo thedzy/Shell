@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 tput reset
 printf '\e[3J'
@@ -41,12 +41,15 @@ printf '\e[3J'
 ################
 
 ExitTrap () {
+    # Restore output to terminal
+    exec &>/dev/tty
+
     # Exit code/cleanup
 
 
 
     # Clean up tmpdir
-    rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
+	rm -rf "$TMPDIR" || printf "Error removing temporary directory %s\n" "$TMPDIR"
 
     # Restore formatting
     printf "${KNRM}"
@@ -91,8 +94,8 @@ trap 'ErrTrap ${LINENO} ${?}' ERR
 ################
 
 # Global Variables
-BASEPATH="$(dirname $0)"
-BASENAME="$(basename $0)"
+BASEPATH="$(dirname "$0")"
+BASENAME="$(basename "$0")"
 
 
 # Create temporary and working diorectory
@@ -125,7 +128,7 @@ LOGGING=0
 #printf '\033[8;40;100t'
 
 # Set window Title
-printf "\033]0;${BASENAME%%.*}\007"
+printf "\033]0;%s\007" "${BASENAME%%.*}"
 
 # Hide the cursor for the run of the script
 tput civis
