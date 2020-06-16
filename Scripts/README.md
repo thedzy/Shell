@@ -1,8 +1,11 @@
 # Scripts
 Stand alone scripts
 
+## [clone_dir_with_hardlinks](https://github.com/thedzy/Shell/blob/master/Scripts/clone_dir_with_hardlinks.sh)
+Clone a directory by creating the folder structure and hard linking the files within
+
 ## [create_payloadfree_package](https://github.com/thedzy/Shell/blob/master/Scripts/create_payloadfree_package.sh)
-Recreates the package command for creating a payload free package by allowing the use to scpecify the post and preinstall without them needing to be named correctly and in a folder
+Recreates the package command for creating a payload free package by allowing the use to specif the post and preinstall without them needing to be named correctly and in a folder
 
 ## [colours.sh](https://github.com/thedzy/Shell/blob/master/Scripts/colours.sh)
 Visualise term 256 colours or find the colour pattern to create a gradient
