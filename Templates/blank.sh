@@ -13,7 +13,7 @@ printf '\e[3J'
 #
 # Versions
 # 1.	Features
-#		
+#        
 #
 # Parameters
 # -h	Help
@@ -41,46 +41,46 @@ printf '\e[3J'
 ################
 
 ExitTrap () {
-	# Exit code/cleanup
-	
-	
+    # Exit code/cleanup
 
-	# Clean up tmpdir
-	rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
 
-	# Restore formatting
-	printf "${KNRM}"
-	
-	# Restore the cursor
-	tput cnorm
-	
-	#printf "Exiting $1\n"
-	exit $1
+
+    # Clean up tmpdir
+    rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
+
+    # Restore formatting
+    printf "${KNRM}"
+
+    # Restore the cursor
+    tput cnorm
+
+    #printf "Exiting $1\n"
+    exit $1
 }
 trap 'ExitTrap $?' INT EXIT TERM
 
 ErrTrap () {
-	# Error trapping
-	local ERRLNE="$1"
-	local ERRNUM="$2"
-	local ERRCMD=$(sed -n -e  "$1  p" "$0")
-	local ERRDAT=$(date +"%Y.%m.%d %H.%M.%S")
-	
-	#Output err to screen and line
-	printf "$ERRDAT Error: $ERRNUM on line $ERRLNE: $ERRCMD\n"
+    # Error trapping
+    local ERRLNE="$1"
+    local ERRNUM="$2"
+    local ERRCMD=$(sed -n -e        "$1        p" "$0")
+    local ERRDAT=$(date +"%Y.%m.%d %H.%M.%S")
 
-	# Ask to continue
-	tput sc
-	local OPT=""
-	until [ "${OPT/Y/y}" == "y" ] || [ "${OPT/N/n}" == "n" ]; do
-		tput rc
-		!(( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
-		OPT=${OPT:-0}
-		(( LOGGING )) && OPT="y"
-	done
-	
-	# Exit if the user chooses "N/n"
-	[ "${OPT/N/n}" == "n" ] && exit $(( $ERRNUM + 100 )) || printf "\nContinuing ....\n"
+    #Output err to screen and line
+    printf "$ERRDAT Error: $ERRNUM on line $ERRLNE: $ERRCMD\n"
+
+    # Ask to continue
+    tput sc
+    local OPT=""
+    until [ "${OPT/Y/y}" == "y" ] || [ "${OPT/N/n}" == "n" ]; do
+        tput rc
+        !(( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
+        OPT=${OPT:-0}
+        (( LOGGING )) && OPT="y"
+    done
+
+    # Exit if the user chooses "N/n"
+    [ "${OPT/N/n}" == "n" ] && exit $(( $ERRNUM + 100 )) || printf "\nContinuing ....\n"
 }
 trap 'ErrTrap ${LINENO} ${?}' ERR
 
@@ -118,7 +118,7 @@ LOGGING=0
 
 # Turn off line wrapping:
 #printf '\033[?7l'
-# Turn on  line wrapping:
+# Turn on        line wrapping:
 #printf '\033[?7h'
 
 # Set window size ex. 100w x 40h
@@ -139,37 +139,37 @@ tput civis
 #[[ ! $@ =~ ^\-.+ ]] && HELP=true
 
 # Parse arguments/parameters
-while getopts ":a:d?:h?:l:" opt; do
-	case $opt in
-	l)
-		LOGFILE="$OPTARG"
-		echo "$LOGFILE"
-		if [ -d "$(dirname $LOGFILE)" ]; then
-			exec &> "$LOGFILE"
-			LOGGING=1
-		else
-			printf "Invalid log path: %s\n" "$LOGFILE"
-			exit 2
-		fi
-		;;
-    a)
-		OPTA="$OPTARG" >&2
-		;;
-    d)
-		set -x
-		;;
-    h)
-		HELP=true
-		;;
-    \?)
-		echo "Invalid option: -$OPTARG" >&2
-		exit 1
-		;;
-    :)
-		echo "Option -$OPTARG requires an argument." >&2
-		exit 1
-		;;
-	esac
+while getopts ":a:d?:h?:l:" OPT; do
+    case $OPT in
+    l)
+        LOGFILE="$OPTARG"
+        echo "$LOGFILE"
+        if [ -d "$(dirname $LOGFILE)" ]; then
+            exec &> "$LOGFILE"
+            LOGGING=1
+        else
+            printf "Invalid log path: %s\n" "$LOGFILE"
+            exit 2
+        fi
+        ;;
+        a)
+            OPTA="$OPTARG" >&2
+        ;;
+        d)
+            set -x
+        ;;
+        h)
+            HELP=true
+        ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+        ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+        ;;
+    esac
 done
 
 ##########################################################################################
@@ -177,41 +177,39 @@ done
 ################
 
 if ( ${HELP:-false} ); then
-	printf "\n"
+    printf "\n"
 
-	# NAME
-	printf "${KBLD}[NAME]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"$(basename ${0%.*})"
-	
-	# SYNOPSIS
-	printf "${KBLD}[SYNOPSIS]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"$(basename $0) -hdl"
-	
-	# DESCRIPTION
-	printf "${KBLD}[DESCRIPTION]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Supports line wraping " | \
-		fmt -p -w $(tput cols)
+    # NAME
+    printf "${KBLD}[NAME]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "$(basename ${0%.*})"
 
-	# OPTIONS
-	printf "${KBLD}[OPTIONS]${KNRM}\n"
-	printf "\t%s\t%s\n" \
-		"h" "Bring up this help message" \
-		"d" "Debug on" \
-		"l" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
-	
-	
-	printf "\n\n"
-	exit 0
+    # SYNOPSIS
+    printf "${KBLD}[SYNOPSIS]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "$(basename $0) -hdl"
+
+    # DESCRIPTION
+    printf "${KBLD}[DESCRIPTION]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Supports line wraping " | \
+        fmt -p -w $(tput cols)
+
+    # OPTIONS
+    printf "${KBLD}[OPTIONS]${KNRM}\n"
+    printf "\t%s\t%s\n" \
+        "h" "Bring up this help message" \
+        "d" "Debug on" \
+        "l" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
+
+    printf "\n\n"
+    exit 0
 fi
 
 
 ##########################################################################################
 # Functions
 ################
-
 
 
 

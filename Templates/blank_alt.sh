@@ -41,46 +41,46 @@ printf '\e[3J'
 ################
 
 ExitTrap () {
-	# Exit code/cleanup
-	
-	
+    # Exit code/cleanup
+    
+    
 
-	# Clean up tmpdir
-	rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
+    # Clean up tmpdir
+    rm -rf "$TMPDIR" || printf "Error removing temporary directory $TMPDIR\n"
 
-	# Restore formatting
-	printf "${KNRM}"
-	
-	# Restore the cursor
-	tput cnorm
-	
-	#printf "Exiting $1\n"
-	exit $1
+    # Restore formatting
+    printf "${KNRM}"
+    
+    # Restore the cursor
+    tput cnorm
+    
+    #printf "Exiting $1\n"
+    exit $1
 }
 trap 'ExitTrap $?' INT EXIT TERM
 
 ErrTrap () {
-	# Error trapping
-	local ERRLNE="$1"
-	local ERRNUM="$2"
-	local ERRCMD=$(sed -n -e  "$1  p" "$0")
-	local ERRDAT=$(date +"%Y.%m.%d %H.%M.%S")
-	
-	#Output err to screen and line
-	printf "$ERRDAT Error: $ERRNUM on line $ERRLNE: $ERRCMD\n"
+    # Error trapping
+    local ERRLNE="$1"
+    local ERRNUM="$2"
+    local ERRCMD=$(sed -n -e "$1 p" "$0")
+    local ERRDAT=$(date +"%Y.%m.%d %H.%M.%S")
+    
+    #Output err to screen and line
+    printf "$ERRDAT Error: $ERRNUM on line $ERRLNE: $ERRCMD\n"
 
-	# Ask to continue
-	tput sc
-	local OPT=""
-	until [ "${OPT/Y/y}" == "y" ] || [ "${OPT/N/n}" == "n" ]; do
-		tput rc
-		!(( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
-		OPT=${OPT:-0}
-		(( LOGGING )) && OPT="y"
-	done
-	
-	# Exit if the user chooses "N/n"
-	[ "${OPT/N/n}" == "n" ] && exit $(( $ERRNUM + 100 )) || printf "\nContinuing ....\n"
+    # Ask to continue
+    tput sc
+    local OPT=""
+    until [ "${OPT/Y/y}" == "y" ] || [ "${OPT/N/n}" == "n" ]; do
+        tput rc
+        !(( LOGGING )) && read -p "Continue (y/n)? " -n 1 -s OPT
+        OPT=${OPT:-0}
+        (( LOGGING )) && OPT="y"
+    done
+    
+    # Exit if the user chooses "N/n"
+    [ "${OPT/N/n}" == "n" ] && exit $(( $ERRNUM + 100 )) || printf "\nContinuing ....\n"
 }
 trap 'ErrTrap ${LINENO} ${?}' ERR
 
@@ -140,22 +140,22 @@ tput civis
 
 while [[ $# > 0 ]]
 do
-    key="$1"
-    case $key in
+    KEY="$1"
+    case $KEY in
         -l|--log)
-            nextArg="$2"
-            while ! [[ "$nextArg" =~ -.* ]] && [[ $# > 1 ]]; do
-                LOGFILE+=($nextArg)
+            NEXT_ARG="$2"
+            while ! [[ "$NEXT_ARG" =~ -.* ]] && [[ $# > 1 ]]; do
+                LOGFILE+=($NEXT_ARG)
                 if [ -d "$(dirname $LOGFILE)" ]; then
-					exec &> "$LOGFILE"
-					LOGGING=1
-				else
-					printf "Invalid log path: %s\n" "$LOGFILE"
-					exit 2
-				fi
+          exec &> "$LOGFILE"
+          LOGGING=1
+        else
+          printf "Invalid log path: %s\n" "$LOGFILE"
+          exit 2
+        fi
                 if ! [[ "$2" =~ -.* ]]; then
                     shift
-                    nextArg="$2"
+                    NEXT_ARG="$2"
                 else
                     shift
                     break
@@ -170,7 +170,7 @@ do
             HELP=true
         ;;
         *)
-            echo "Unknown flag $key"
+            echo "Unknown flag $KEY"
             exit 1
         ;;
     esac
@@ -182,34 +182,34 @@ done
 ################
 
 if ( ${HELP:-false} ); then
-	printf "\n"
+    printf "\n"
 
-	# NAME
-	printf "${KBLD}[NAME]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"$(basename ${0%.*})"
-	
-	# SYNOPSIS
-	printf "${KBLD}[SYNOPSIS]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"$(basename $0) -hdl"
-	
-	# DESCRIPTION
-	printf "${KBLD}[DESCRIPTION]${KNRM}\n"
-	printf "\t%s\n\n" \
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Supports line wraping " | \
-		fmt -p -w $(tput cols)
+    # NAME
+    printf "${KBLD}[NAME]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "$(basename ${0%.*})"
+    
+    # SYNOPSIS
+    printf "${KBLD}[SYNOPSIS]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "$(basename $0) -hdl"
+    
+    # DESCRIPTION
+    printf "${KBLD}[DESCRIPTION]${KNRM}\n"
+    printf "\t%s\n\n" \
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Supports line wraping " | \
+        fmt -p -w $(tput cols)
 
-	# OPTIONS
-	printf "${KBLD}[OPTIONS]${KNRM}\n"
-	printf "\t%s\t%s\n" \
-		"h|help" "Bring up this help message" \
-		"d|debug" "Debug on" \
-		"l|log" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
-	
-	
-	printf "\n\n"
-	exit 0
+    # OPTIONS
+    printf "${KBLD}[OPTIONS]${KNRM}\n"
+    printf "\t%s\t%s\n" \
+        "h|help" "Bring up this help message" \
+        "d|debug" "Debug on" \
+        "l|log" "Log all output to file to file specified (ex. -l /var/log/logfile.log)"\
+    
+    
+    printf "\n\n"
+    exit 0
 fi
 
 
