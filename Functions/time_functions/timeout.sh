@@ -27,13 +27,13 @@ timeout() {
     # (spawn accepts one command)
     COMMAND="/bin/sh -c \"$2\""
 
-    expect -c "set echo \"-noecho\"; set timeout $TIME; spawn -noecho $COMMAND; expect timeout { exit 1 } eof { exit 0 }"    
+    expect -c "set echo \"-noecho\"; set timeout $TIME; spawn -noecho $COMMAND; expect timeout { exit 1 } eof { exit 0 }"
 
-    if [ $? = 1 ] ; then
+    if [ $? = 1 ]; then
         printf "Timeout after ${TIME} seconds\n"
         return 1
     else
-    	return 0
+        return 0
     fi
 
 }
