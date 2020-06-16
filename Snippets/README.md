@@ -4,11 +4,11 @@ Snippets of code for larger bodies of code
 ## [accessing_regio.sh](https://github.com/thedzy/Shell/blob/master/Snippets/accessing_regio.sh)
 Read and find data in the ioreg (I/O Kit registry)
 ## [arguments_named.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_named.sh)
-Getting poistionsal arguments supplied after the command/file with single character arguments (-h)
+Getting positional arguments supplied after the command/file with single character arguments (-h)
 ## [arguments_named_alt.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_named_alt.sh)
-Getting poistionsal arguments supplied after the command/file with full names (--help)
+Getting positional arguments supplied after the command/file with full names (--help)
 ## [arguments_positional.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_positional.sh)
-Getting poistionsal arguments supplied after the command/file
+Getting positional arguments supplied after the command/file
 ## [arguments_stdin.sh](https://github.com/thedzy/Shell/blob/master/Snippets/arguments_stdin.sh)
 Getting arguments supplied through stdin
 ## [dialog_ok.sh](https://github.com/thedzy/Shell/blob/master/Snippets/dialog_ok.sh)
@@ -30,7 +30,7 @@ Create a HR (Horizontal Rule)
 ## [json_pretty_print.sh](https://github.com/thedzy/Shell/blob/master/Snippets/json_pretty_print.sh)
 How to pretty print a json file
 ## [multithreading.sh](https://github.com/thedzy/Shell/blob/master/Snippets/multithreading.sh)
-A simple multithreaded script
+A simple multi-threaded script
 ## [open_url.sh](https://github.com/thedzy/Shell/blob/master/Snippets/open_url.sh)
 Open a url in an external browser
 ## [paths_and_names.sh](https://github.com/thedzy/Shell/blob/master/Snippets/paths_and_names.sh)
